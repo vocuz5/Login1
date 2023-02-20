@@ -1,0 +1,258 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: linear-gradient(to bottom right , #BEEBF1 , #F3ACCC);
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: hidden;
+    font-family: monospace;
+}
+
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    z-index: 1;
+    height: 90vh;
+}
+.container::before{
+    content: "";
+    display: block;
+    bottom: 50%;
+    left: 80%;
+    background-image: linear-gradient(to right , #b1baf5, #c2adf3);
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    z-index: -1;
+    animation: backgroundanimation 6s ease-in-out 2s infinite alternate;
+}
+
+.container::after{
+    content: "";
+    display: block;
+    top: 60%;
+    right: 80%;
+    background-image: linear-gradient(to right , #b1baf5, #c2adf3);
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(10px);
+    animation: backgroundanimation 5s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundanimation{
+    from{
+        transform: translate(0, 0);
+    }
+    to{
+        transform: translate(0, 100px);
+    }
+}
+
+.form{
+    background-color: hsla(234, 19%, 90%, 0.6);
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    position: absolute;
+    overflow: hidden;
+}
+.content{
+    width: 80%;
+    padding: 10%;
+    height: 60%;
+    position: absolute;
+    z-index: 2;
+}
+
+h1{
+    color: #fff;
+    margin-bottom: 50px;
+}
+.group{
+    height: 60px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.group-checkbox{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.group label{
+    position: absolute;
+    top: 45px;
+    left: 10%;
+    transition: .5s;
+}
+.group .inputtext{
+    margin-top: 30px;
+    width: 80%;
+    padding: 0 10%;
+    height: 45px;
+    border: none;
+    outline: none;
+    background-color: rgb(255, 255, 255, 0.6);
+}
+.inputtext:focus +label,
+.inputtext:not(:placeholder-shown) +label{
+    top: 0;
+    left: 10%;
+}
+
+.inputtext:valid{
+    border-bottom: 2px solid #b1baf5;
+}
+.checkboxinput +label{
+    position: unset;
+}
+
+button{
+    width: 80%;
+    background-image: linear-gradient(to right, #90abf4, #ca71de);
+    padding: 15px 0;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+}
+
+.content_background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: 1;
+}
+#circur{
+    position: absolute;
+    height: 600px;
+    width: 600px;
+    border-radius: 52% 48% 45% 55% / 31% 0% 100% 69%  ;
+    top: -60%;
+    left: -30%;
+    background-image: linear-gradient(to right, #b1baf5, #c2adf3);
+}
+
+.options{
+    position: absolute;
+    z-index: 2;
+    bottom: 30px;
+    width: 70%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.changetype{
+    width: 50%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    cursor: pointer;
+}
+
+.bg-active{
+    position: absolute;
+    height: 40px;
+    background-color: #ca71de;
+    border-radius: 20px;
+    width: 50%;
+    z-index: -1;
+    transition: 1.5s;
+}
+
+.changetype.active{
+    color: #fff;
+}
+
+
+/* Login */
+.form.login .content:nth-child(1){
+    animation: nextLogin 1s ease-in-out 1 forwards;
+    z-index: 2;
+}
+
+.form.login .content:nth-child(2){
+    z-index: 2;
+    animation: backLogin 1s ease-in-out 1 forwards;
+}
+
+@keyframes nextLogin{
+    from{
+        transform: translateX(100%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+
+@keyframes backLogin {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+/* Register */
+
+.form.register .content:nth-child(2){
+    z-index: 2;
+    animation: nextRegister 1s ease-in-out forwards;
+}
+
+@keyframes nextRegister{
+    from{
+        transform: translateX(-100%);
+    }to{
+        transform: translateX(0);
+    }
+}
+
+.form.register .content:nth-child(1){
+    z-index: 2;
+    animation: backRegister 1s ease-in-out forwards;
+}
+
+@keyframes backRegister{
+    from{
+        transform: translateX(0);
+    }to{
+        transform: translateX(100%);
+    }
+}
+
+@media screen and (max-width: 767.98px) {
+    body{
+        width: 100px;
+        height: 100vh;
+    }
+    .container{
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        width: 100%;
+        height: 90vh;
+        overflow: hidden;
+        width: 90%;
+        border-radius: 20px;
+    }
+}
